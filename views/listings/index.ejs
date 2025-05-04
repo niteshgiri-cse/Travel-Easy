@@ -1,0 +1,27 @@
+<% layout("/layouts/boilerplate") -%>
+<body>
+  <h3>All Listings:</h3>
+
+  <!-- Responsive Grid for Listings -->
+  <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1">
+    <% for (let listing of allListings) { %>
+      <div class="card col" style="width: 20rem;">
+        <!-- Anchor for clickable listing -->
+        <a href="/listings/<%= listing._id %>" class="listing-link">
+          <img src="<%= listing.image %>" class="card-img-top" alt="listing" style="height: 20rem; object-fit: cover;">
+           <div class="card-img-overlay">abcd</div>
+        </a>
+        <div class="card-body">
+          <p class="card-text">
+            <b><%= listing.title %></b><br>
+            <% if (listing.price != null) { %>
+              &#8377; <%= listing.price.toLocaleString("en-IN") %> /night
+            <% } else { %>
+              Price not available
+            <% } %>
+          </p>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</body>
